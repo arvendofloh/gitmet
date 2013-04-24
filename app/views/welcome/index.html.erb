@@ -1,0 +1,58 @@
+<div id="container" style="width:100%; height:400px;"></div>
+
+
+
+<h1>Listing Commits</h1>
+ 
+<table class="table table-striped">
+  <tr>
+    <th>committed_date</th>
+    <th>committer</th>
+    <th>added</th>
+	<th>deleted</th>
+	<th>total</th>
+	<th>message</th>
+  </tr>
+ 
+<% @commits.each do |commit| %>
+  <tr>
+	<td><%= commit.committed_date %></td>
+    <td><%= commit.committer %></td>
+	<td><span class="btn btn-success"><%= commit.stats.additions %></span></td>
+	<td><span class="btn btn-alert"><%= commit.stats.deletions %></span></td>
+	<td><span class="btn btn-inverse"><%= commit.stats.total %></span></td>
+	<td><%= commit.message %></td>
+  </tr>
+ 
+<% end %>
+</table>
+
+
+<script>
+$(function () { 
+	$('#container').highcharts({
+	            chart: {
+	                type: 'column'
+	            },
+	            title: {
+	                text: 'Commits'
+	            },
+	            xAxis: {
+	                categories: [<% @commits.each do |commit| %>'<%= commit.committed_date %>',<% end %> ]
+	            },
+	            credits: {
+	                enabled: false
+	            },
+	            series: [{
+	                name: 'Additions',
+	                data: [<% @commits.each do |commit| %><%= commit.stats.additions %>,<% end %>]
+	            }, {
+	                name: 'Deletions',
+	                data: [<% @commits.each do |commit| %><%= commit.stats.deletions %>,<% end %>]
+	            }, {
+	                name: 'Total',
+	                data: [<% @commits.each do |commit| %><%= commit.stats.total %>,<% end %>]
+	            }]
+	        });
+});
+</script>

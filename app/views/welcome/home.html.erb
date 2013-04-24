@@ -1,0 +1,25 @@
+<center>
+	<h1>GitMet 0.1 - OpenSource Git-Metrics</h1>
+	<br>
+	<% form_tag do %>
+		<%= label_tag(:my_name, "My name is:") %>
+	  <%= text_field_tag(:my_name) %>
+	  <%= submit_tag("Process") %>
+	<% end %>
+	<form class="form-inline">
+	  <input type="text" class="input-xxlarge" placeholder="Enter the URL to your Git-Resource">
+	  <button type="submit" class="btn"><i class="icon-align-left"></i> Met it!</button>
+	</form>
+	<br>
+	<div class="row-fluid">
+		<div class="span6 offset3">
+			<div class="well" style="text-align:left;">
+				<h2><p class="muted">1. Enter a GitHub-URL..</p></h2>
+				<h3><p class="muted">or</p></h3>
+				<h2><p class="muted">2. Enter an URL to your own Repository..</p></h2>
+				<h3><p class="muted">or</p></h3>
+				<h2><p class="muted">3. Find a local Git-Repository..</p></h2>
+			</div>
+		</div>
+	</div>
+</center>
